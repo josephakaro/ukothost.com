@@ -80,7 +80,7 @@ const PrivateNavbar = () => {
 					<div className="flex flex-col justify-center text-sm flex-1">
 						<h1 className="font-bold">{user.name}</h1>
 						<h1 className="text-sm font-thin">
-							{user.preferred_username}
+							{'ID: ' + user.sub.split('|')[1].slice(0, 10)}
 						</h1>
 					</div>
 				</div>
