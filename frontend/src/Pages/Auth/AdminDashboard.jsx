@@ -170,14 +170,14 @@ function AdminDashboard() {
 				<div className="sm:row-span-2 sm:grid sm:grid-cols-5 sm:gap-8 gap-4 bg-slate-100 text-slate-200 p-2 shadow-sm rounded-lg">
 					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-lg">
 						<h1 className="flex flex-col items-stretch justify-between">
-							<MdAttachMoney className="text-5xl" />
+							<MdAttachMoney className="text-4xl" />
 							<span>Revenue</span>
 						</h1>
 						<h2 className="text-4xl font-bold">3.9k</h2>
 					</div>
 					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-lg">
 						<h1 className="flex flex-col items-stretch justify-between">
-							<FaUserFriends className="text-5xl" />
+							<FaUserFriends className="text-4xl" />
 							<span>Clients</span>
 						</h1>
 						<h2 className="text-4xl font-bold">390</h2>

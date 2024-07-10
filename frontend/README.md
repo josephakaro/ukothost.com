@@ -1,8 +1,21 @@
-# React + Vite
+# UKOTHOST: Portfolio Project.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<br>
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    Must include link to your deployed site, final project blog article, author(s) LinkedIn
+
+## Installation
+
+## Usage
+
+## Contributing
+
+## Related projects
+
+    - DigitalOcean.
+    - Hostinger
+    - Linode
+
+## Licensing
