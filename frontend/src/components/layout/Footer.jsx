@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 	return (
@@ -27,11 +28,9 @@ const Footer = () => {
 			</footer>
 			<footer className="footer bg-blue-700 text-slate-200 border-blue-800 border-t px-10 py-4">
 				<aside className="grid-flow-col items-center">
-					<img
-						src="https://ukothost.fra1.cdn.digitaloceanspaces.com/assets/ukoth_White.png"
-						alt="logo"
-						width={100}
-					/>
+					<Link to="/" className="btn btn-ghost font-bold">
+						UKOTHOST
+					</Link>
 					<p>
 						UKotHost Ltd.
 						<br />

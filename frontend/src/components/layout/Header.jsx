@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { AiOutlineAlignLeft } from 'react-icons/ai';
 import { BiListMinus } from 'react-icons/bi';
@@ -71,25 +72,27 @@ const Header = () => {
 						</li>
 					</ul>
 				</div>
-				<a className="btn btn-ghost text-xl">
-					<img
-						src="https://ukothost.fra1.cdn.digitaloceanspaces.com/assets/ukoth_Normal.png"
-						alt="logo"
-						width={100}
-					/>
-				</a>
+				<Link
+					to="/"
+					className="btn btn-ghost text-xl font-bold text-blue-700"
+				>
+					UKOTHOST
+				</Link>
 			</div>
 			<div className="navbar-center hidden lg:flex">
 				<ul className="menu menu-horizontal px-1 text-lg">
 					<li>
 						<details>
 							<summary>Products</summary>
-							<ul className="p-2">
+							<ul className="p-2 w-64">
 								<li>
-									<a>Submenu 1</a>
+									<a>Dedicated Server</a>
 								</li>
 								<li>
-									<a>Submenu 2</a>
+									<a>WordPress LightSpeed</a>
+								</li>
+								<li>
+									<a>Managed Database</a>
 								</li>
 							</ul>
 						</details>
@@ -97,7 +100,7 @@ const Header = () => {
 					<li>
 						<details>
 							<summary>Solutions</summary>
-							<ul className="p-2">
+							<ul className="p-2 w-64">
 								<li>
 									<a>Submenu 1</a>
 								</li>
@@ -110,7 +113,7 @@ const Header = () => {
 					<li>
 						<details>
 							<summary>Developers</summary>
-							<ul className="p-2">
+							<ul className="p-2 w-64">
 								<li>
 									<a>Submenu 1</a>
 								</li>
@@ -123,7 +126,7 @@ const Header = () => {
 					<li>
 						<details>
 							<summary>Partners</summary>
-							<ul className="p-2">
+							<ul className="p-2 w-64">
 								<li>
 									<a>Submenu 1</a>
 								</li>

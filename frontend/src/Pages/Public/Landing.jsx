@@ -69,8 +69,7 @@ function Landing() {
 						<div className="stat-title text-wrap">
 							In IaaS usability, VPS for SMBs, & SMB Hosting on G2
 						</div>
-					</div>{' '}
-					/
+					</div>
 					<div className="stat place-items-center">
 						<div className="stat-value">99.99%</div>
 						<div className="stat-title text-wrap">
@@ -120,7 +119,7 @@ function Landing() {
 			</div>
 
 			{/* Products Section Here */}
-			<div className="flex flex-col items-center justify-between gap-4 sm:p-12 p-8 w-screen h-full">
+			<div className="flex flex-col items-center justify-between gap-4 sm:p-12 p-8 w-full h-full">
 				<div className="text-center">
 					<h1 className="text-5xl font-bold">
 						A cloud for your entire journey
@@ -267,7 +266,7 @@ function Landing() {
 			</div>
 
 			{/* Value offering Section Here */}
-			<div className="flex flex-col items-center bg-blue-300 justify-between gap-4 sm:p-12 p-8 w-screen h-full">
+			<div className="flex flex-col items-center bg-blue-300 justify-between gap-4 sm:p-12 p-8 w-full h-full">
 				<div className="text-center">
 					<h1 className="text-5xl font-bold text-wrap">
 						Benefits to activate the builder in you
