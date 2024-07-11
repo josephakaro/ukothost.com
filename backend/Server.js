@@ -2,6 +2,10 @@ const express = require('express');
 const axios = require('axios');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+// const syncDatabase = require('./database/sync');
+const User = require('./model/user');
+const Knowledge = require('./model/knowledge');
+const Post = require('./model/post');
 
 // Controllers
 
@@ -15,6 +19,42 @@ const DIGITALOCEAN_API_URL = process.env.DIGITALOCEAN_API_URL;
 const DIGITALOCEAN_API_TOKEN = process.env.DIGITALOCEAN_API_TOKEN;
 
 app.use(bodyParser.json());
+
+const createUser = async (
+	authId,
+	userImage,
+	firstName,
+	lastName,
+	phone,
+	email,
+	userRole,
+	userStatus,
+	userOnline,
+	created_at,
+	updated_at
+) => {
+	const userExits = await User.findOne({ where: { authId } });
+
+	if (userExits) {
+		return 'User already exists: ' + userExits.toJSON();
+	} else {
+		const newUser = await User.create({
+			authId,
+			userImage,
+			firstName,
+			lastName,
+			phone,
+			email,
+			userRole,
+			userStatus,
+			userOnline,
+			created_at,
+			updated_at,
+		});
+		await sequelize.close();
+		return newUser.toJSON();
+	}
+};
 
 // ================= Database ================//
 // Create Managed Database
@@ -47,7 +87,6 @@ const createDatabase = async (
 		throw error;
 	}
 };
-
 // Function to delete a managed database
 const deleteDatabase = async (databaseId) => {
 	try {
@@ -65,9 +104,7 @@ const deleteDatabase = async (databaseId) => {
 		throw error;
 	}
 };
-
 // ============= Droplet ================//
-
 const createDroplet = async (
 	name,
 	region,
@@ -102,7 +139,6 @@ const createDroplet = async (
 		throw error;
 	}
 };
-
 // Function to delete a droplet
 const deleteDroplet = async (dropletId) => {
 	try {
@@ -122,6 +158,67 @@ const deleteDroplet = async (dropletId) => {
 };
 
 // ====== Endpoints ====== //
+app.post('/newUser', async (req, res) => {
+	const {
+		authId,
+		userImage,
+		firstName,
+		lastName,
+		phone,
+		email,
+		userRole,
+		userStatus,
+		userOnline,
+	} = req.params;
+
+	try {
+		const user = await createUser(
+			authId,
+			userImage,
+			firstName,
+			lastName,
+			phone,
+			email,
+			userRole,
+			userStatus,
+			userOnline
+		);
+		res.status(200).json(user);
+		console.log(user);
+	} catch (error) {
+		res.status(500).json({ error: error.message });
+	}
+});
+
+app.get('/users', (req, res) => {
+	User.findAll()
+		.then((Users) => {
+			res.status(200).json(Users);
+		})
+		.catch((error) => {
+			res.status(500).json({ error: error.message });
+		});
+});
+
+app.get('/posts', (req, res) => {
+	Post.findAll()
+		.then((Posts) => {
+			res.status(200).json(Posts);
+		})
+		.catch((error) => {
+			res.status(500).json({ error: error.message });
+		});
+});
+
+app.get('/knowledges', (req, res) => {
+	Knowledge.findAll()
+		.then((Knowledges) => {
+			res.status(200).json(Knowledges);
+		})
+		.catch((error) => {
+			res.status(500).json({ error: error.message });
+		});
+});
 
 app.post('/create-server', async (req, res) => {
 	const { name, password, type } = req.body;
@@ -155,7 +252,6 @@ app.post('/create-server', async (req, res) => {
 		res.status(500).json({ error: error.message });
 	}
 });
-
 // DELETE endpoint to delete a server (droplet or database)
 app.delete('/delete-server/:type/:id', async (req, res) => {
 	const { type, id } = req.params;
@@ -174,10 +270,10 @@ app.delete('/delete-server/:type/:id', async (req, res) => {
 		res.status(500).json({ error: error.message });
 	}
 });
-
 // App Entry Point
 app.listen(PORT, () => {
 	try {
+		// syncDatabase(); // Run Sync Database once the server starts
 		console.log(`Server is running on port ${PORT}`);
 	} catch (error) {
 		console.log('Error starting server');

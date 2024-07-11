@@ -1,15 +1,19 @@
 CREATE DATABASE IF NOT EXISTS ukothost;
 
+DROP DATABASE ukothost;
+
 USE ukothost;
 
 CREATE USER IF NOT EXISTS 'ukothost'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON ukothost.* TO 'ukothost'@'localhost';
+GRANT ALL ON ukothost.* TO 'ukothost'@'localhost';
+
 
 FLUSH PRIVILEGES;
 
 -- ==============================================================================================
 -- User Tables:
+
 CREATE TABLE IF NOT EXISTS users(
     userId INT AUTO_INCREMENT,
     authId VARCHAR(100) NOT NULL,
@@ -25,6 +29,9 @@ CREATE TABLE IF NOT EXISTS users(
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY(userId)
 )
+
+DROP TABLE users;
+ALTER TABLE tickets DROP FOREIGN KEY userId;
 
 -- Ticket Tables:
 CREATE TABLE IF NOT EXISTS tickets(

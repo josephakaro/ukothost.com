@@ -39,16 +39,6 @@ function AdminDashboard() {
 					</li>
 					<li>
 						<Link
-							to={'/messages'}
-							className="hover:bg-blue-100 hover:text-blue-900"
-						>
-							<BiMessageSquareDetail className="md:text-2xl text-xl mr-2" />
-							Messages
-							<span className="badge badge-sm">15</span>
-						</Link>
-					</li>
-					<li>
-						<Link
 							to={'/clients'}
 							className="hover:bg-blue-100 hover:text-blue-900"
 						>
@@ -160,43 +150,44 @@ function AdminDashboard() {
 						</ul>
 					</div>
 				</div>
-				<div className="flex flex-row items-stretch justify-between sm:p-4 p-1 px-4 h-64">
+				<div className="flex flex-row items-stretch justify-between p-1 px-4 h-64">
 					<h1 className="text-lg font-bold text-slate-500">
 						Welcome back, {user.given_name}!
 					</h1>
 				</div>
 			</nav>
 			<main className="sm:grid sm:grid-rows-8 grid grid-row-6 sm:gap-4 gap-4 md:col-span-5 md:row-span-6 row-span-5 p-4 bg-slate-200">
-				<div className="sm:row-span-2 sm:grid sm:grid-cols-5 sm:gap-8 gap-4 bg-slate-100 text-slate-200 p-2 shadow-sm rounded-lg">
-					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-lg">
+				<div className="sm:row-span-2 sm:grid sm:grid-cols-5 sm:gap-8 gap-4 text-slate-200">
+					{/** Revenue Card */}
+					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-xl">
 						<h1 className="flex flex-col items-stretch justify-between">
-							<MdAttachMoney className="text-4xl" />
+							<MdAttachMoney className="text-5xl" />
 							<span>Revenue</span>
 						</h1>
 						<h2 className="text-4xl font-bold">3.9k</h2>
 					</div>
-					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-lg">
+					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-xl">
 						<h1 className="flex flex-col items-stretch justify-between">
-							<FaUserFriends className="text-4xl" />
+							<FaUserFriends className="text-5xl" />
 							<span>Clients</span>
 						</h1>
 						<h2 className="text-4xl font-bold">390</h2>
 					</div>
-					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-lg">
+					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-xl">
 						<h1 className="flex flex-col items-stretch justify-between">
 							<FaShoppingCart className="text-5xl" />
 							<span>Orders</span>
 						</h1>
 						<h2 className="text-4xl font-bold">15k</h2>
 					</div>
-					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-lg">
+					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-xl">
 						<h1 className="flex flex-col items-stretch justify-between">
 							<IoTicketOutline className="text-5xl" />
 							<span>Open Tickets</span>
 						</h1>
 						<h2 className="text-4xl font-bold">10</h2>
 					</div>
-					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-lg">
+					<div className="sm:col-span-1 flex flex-row items-stretch justify-between align-middle bg-sky-900 p-4 rounded-xl">
 						<h1 className="flex flex-col items-stretch justify-between">
 							<IoTicket className="text-5xl" />
 							<span>Closed Tickets</span>
@@ -206,13 +197,127 @@ function AdminDashboard() {
 				</div>
 				<div className="sm:row-span-6">
 					<div className="sm:grid sm:grid-cols-4 gap-4 h-full">
-						<div className="sm:col-span-2  bg-slate-100 p-2 rounded-lg shadow-sm">
-							<h1 className="p-1">Recent Orders</h1>
-							<div>Table</div>
+						<div className="sm:col-span-2 flex flex-col items-stretch justify-start bg-slate-100 p-2 rounded-lg shadow-sm overflow-hidden">
+							<h1 className="flex-none font-semibold text-slate-600 p-1">
+								Recent Orders
+							</h1>
+							<div className="flex-1 overflow-x-auto">
+								<table className="table w-full table-pin-rows">
+									<thead>
+										<tr>
+											<th>Product Name</th>
+											<th>Client</th>
+											<th>Status</th>
+											<th>Created</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Basic Hosting</td>
+											<td>{user.name}</td>
+											<td>Active</td>
+											<td>15 mins ago</td>
+										</tr>
+										<tr>
+											<td>WordPress Hosting</td>
+											<td>John Doe</td>
+											<td>Active</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Managed Database</td>
+											<td>John Marko</td>
+											<td>Inactive</td>
+											<td>12 hours ago</td>
+										</tr>
+										<tr>
+											<td>Premium Hosting</td>
+											<td>May Scot</td>
+											<td>Active</td>
+											<td>1 day ago</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
-						<div className="sm:col-span-2  bg-slate-100 p-2 rounded-lg shadow-sm">
-							<h1 className="p-1">Recent Tickets</h1>
-							<div>Table</div>
+						<div className="sm:col-span-2 flex flex-col items-stretch justify-start bg-slate-100 p-2 rounded-lg shadow-sm overflow-hidden">
+							<h1 className="flex-none font-semibold text-slate-600 p-1">
+								Recent Tickets
+							</h1>
+							<div className="flex-1 overflow-x-auto">
+								<table className="table w-full table-pin-rows">
+									<thead>
+										<tr>
+											<th>Subject</th>
+											<th>Client</th>
+											<th>Status</th>
+											<th>Created</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+										<tr>
+											<td>Website Down</td>
+											<td>John Doe</td>
+											<td>Open</td>
+											<td>2 hours ago</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

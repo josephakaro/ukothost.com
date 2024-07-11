@@ -11,7 +11,7 @@ import { TiCloudStorage } from 'react-icons/ti';
 import { IoMdHelpCircleOutline } from 'react-icons/io';
 
 function Landing() {
-	const { loginWithRedirect, signupWithRedirect } = useAuth0();
+	const { loginWithRedirect } = useAuth0();
 	return (
 		<Layout>
 			{/* Hero Section Here */}
